@@ -50,14 +50,9 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 export async function GET(request: Request) {
 
-    console.log("GET request to auth/login");
-
     const cookieList = await cookies();
 
     const session = cookieList.get("session");
-
-    console.log("Session cookie:", session);
-
     if (!session) {
         return NextResponse.json({ isAuthenticated: false }, { status: 401 });
     }

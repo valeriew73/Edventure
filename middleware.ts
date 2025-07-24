@@ -37,15 +37,21 @@ export async function middleware(request: NextRequest) {
             return NextResponse.redirect(new URL("/api/auth/logout", BASE_URL));
         }
 
+        const metadata = await metadataApi.json();
+        if (!metadata.cvData || !metadata.cvUrl) {
+            return NextResponse.redirect(new URL("/onboarding", BASE_URL));
+        }
+
         return NextResponse.next();
     } catch (error) {
         console.error("Middleware error:", error);
-        return NextResponse.redirect(new URL("/", BASE_URL));
+        return NextResponse.redirect(new URL("/login", BASE_URL));
     }
 }
 
 export const config = {
     matcher: [
-        "/explore/:path*",
+        // "/onboarding",
+        // "/"
     ],
 };

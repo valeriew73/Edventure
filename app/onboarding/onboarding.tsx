@@ -54,9 +54,12 @@ export default function Onboarding({ userId }: { userId: string }) {
     const handleCVChange = async (url: string) => {
         const extracted = await extractPDFWithRAG(url);
 
-        console.log("Extracted data:", extracted);
+        // console.log("Extracted data:", extracted);
 
         setUser({ cvUrl: url, userId, cvEmbeddingId: extracted.uniqueId });
+
+        // setUser({ cvUrl: url, userId });
+
         setSelectedOption(undefined);
 
         router.replace("/");

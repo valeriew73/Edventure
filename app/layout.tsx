@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+
+import 'swiper/css';
+import 'swiper/css/effect-cards';
+
 import "./globals.css";
+
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { Toaster } from "@/components/ui/sonner";
@@ -28,15 +33,18 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
 
-  const { isAuthenticated } = await serverAuth();
+  // const { isAuthenticated } = await serverAuth();
 
   return (
     <html lang="en">
+      <head>
+        <meta name="apple-mobile-web-app-title" content="Edventure" />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col justify-between w-full`}
       >
         <Provider>
-          <Navbar isAuthenticated={isAuthenticated} />
+          <Navbar />
           <main>
             {children}
           </main>

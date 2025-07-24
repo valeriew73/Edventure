@@ -28,8 +28,6 @@ export const serverAuth = async (): Promise<ServerAuthResponse> => {
             },
         });
 
-        console.log("Response from auth/login:", responseAPI);
-
         if (!responseAPI.ok) throw new Error("Unauthorized");
 
         return await responseAPI.json();

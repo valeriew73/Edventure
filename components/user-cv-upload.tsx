@@ -6,7 +6,7 @@ import {
     PencilIcon,
     Trash2Icon
 } from "lucide-react";
-import React from "react";
+import React, { useEffect } from "react";
 import { useDropzone } from "react-dropzone";
 import { getDownloadURL, getStorage, ref, uploadBytesResumable } from "firebase/storage";
 import { Button } from "./ui/button";
@@ -52,7 +52,6 @@ const UserCVUpload: React.FC<Props> = ({ userId, onChange, defaultValues }) => {
                 () => {
                     getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
                         setCvUrl(downloadURL);
-                        onChange(downloadURL);
                         setUploading(false);
                     });
                 }
@@ -60,6 +59,12 @@ const UserCVUpload: React.FC<Props> = ({ userId, onChange, defaultValues }) => {
         },
         [userId, onChange]
     );
+
+    useEffect(() => {
+        if (cvUrl) {
+            onChange(cvUrl);
+        }
+    }, [cvUrl, onChange]);
 
     const { getRootProps, getInputProps, isDragActive, open } = useDropzone({
         onDrop,

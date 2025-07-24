@@ -13,10 +13,11 @@ import { toast } from "sonner";
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 interface Props {
-    direction?: string
+    direction?: string;
+    onSuccess?: () => void;
 }
 
-export const SignInPopup: React.FC<Props> = () => {
+export const SignInPopup: React.FC<Props> = ({ onSuccess }) => {
     const router = useRouter();
 
     const { mutate: setUser } = useMutation({ mutationFn: setUserMutation });
@@ -55,6 +56,8 @@ export const SignInPopup: React.FC<Props> = () => {
 
                 toast.success("Login successful!");
                 router.refresh();
+
+                onSuccess?.();
             }
         } catch {
             toast.error("Failed to log in!");
@@ -62,7 +65,7 @@ export const SignInPopup: React.FC<Props> = () => {
     }
 
     return (
-        <Button onClick={signIn} className="flex gap-2 items-center justify-center">
+        <Button onClick={signIn} className="flex gap-2 items-center justify-center hover:cursor-pointer">
             <span>Masuk dengan</span><span>Google</span>
         </Button>
     );

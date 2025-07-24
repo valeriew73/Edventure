@@ -1,10 +1,13 @@
+import { redirect } from "next/navigation";
 import { serverAuth } from "../action-server/auth"
 import Onboarding from "./onboarding";
 
 export default async function Page() {
-    const { user } = await serverAuth();
+    const { user, isAuthenticated } = await serverAuth();
 
-    console.log("User in onboarding page:", user);
+    if (!isAuthenticated) {
+        return redirect("/login");
+    }
 
     return <Onboarding userId={user?.userId} />
 }
