@@ -41,7 +41,7 @@ export default async function RootLayout({
         <meta name="apple-mobile-web-app-title" content="Edventure" />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col justify-between w-full`}
+        className={`antialiased min-h-screen flex flex-col justify-between w-full`}
       >
         <Provider>
           <Navbar />

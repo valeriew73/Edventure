@@ -20,14 +20,20 @@ export default function Navbar() {
                     <span className="font-semibold">Edventure</span>
                 </Link>
             </div>
-            <div className="">
-                <ul className="flex items-center gap-4">
-                    <Link href="/">Explore</Link>
-                    <Link href="/about">About</Link>
-                    <li>
-                        {user ? <SignOutButton /> : <SignInPopup />}
-                    </li>
-                </ul>
+            <div className="flex items-center gap-5">
+                <Link href="/">
+                    <p className="text-lg font-semibold hover:underline transition-colors duration-200">
+                        Explore
+                    </p>
+                </Link>
+                <Link href="/about">
+                    <p className="text-lg font-semibold hover:underline transition-colors duration-200">
+                        About
+                    </p>
+                </Link>
+
+                {user ? <SignOutButton /> : <SignInPopup />}
+
             </div>
         </nav>
     );
