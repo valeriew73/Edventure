@@ -1,100 +1,160 @@
-"use client";
+// "use client";
 
-import { Swiper, SwiperSlide } from 'swiper/react';
+// import { Swiper, SwiperSlide } from 'swiper/react';
 
-import { Input } from "@/components/ui/input";
+// import { Input } from "@/components/ui/input";
 
-import { EffectCards } from 'swiper/modules';
-import { Button } from '@/components/ui/button';
-import { HeartIcon, XIcon } from 'lucide-react';
-import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+// import { EffectCards } from 'swiper/modules';
+// import { Button } from '@/components/ui/button';
+// import { HeartIcon, XIcon } from 'lucide-react';
+// import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 
 
-const mockup = [
-  {
-    title: "Software Engineer",
-    company: "Garuda Hacks",
-    location: "Remote",
-    date: "2023-10-01",
-    description: "Develop and maintain software applications for various clients.",
-    requirements: "Proficiency in programming languages, problem-solving skills, and teamwork.",
-    salary: "$70,000 - $90,000 per year",
-    benefits: "Health insurance, flexible hours, and professional development opportunities."
-  },
-  {
-    title: "Data Scientist",
-    company: "Tech Innovators",
-    location: "New York, NY",
-    date: "2023-09-15",
-    description: "Analyze data to provide insights and support decision-making.",
-    requirements: "Experience with data analysis tools, statistical knowledge, and communication skills.",
-    salary: "$80,000 - $100,000 per year",
-    benefits: "Health insurance, retirement plan, and remote work options."
-  },
-  {
-    title: "Product Manager",
-    company: "Future Tech",
-    location: "San Francisco, CA",
-    date: "2023-08-20",
-    description: "Lead product development from concept to launch, ensuring alignment with business goals.",
-    requirements: "Strong leadership skills, market research experience, and project management expertise.",
-    salary: "$90,000 - $120,000 per year",
-    benefits: "Health insurance, stock options, and professional growth opportunities."
-  },
-  {
-    title: "UX/UI Designer",
-    company: "Creative Solutions",
-    location: "Remote",
-    date: "2023-07-10",
-    description: "Design user-friendly interfaces and enhance user experience across digital platforms.",
-    requirements: "Proficiency in design software, creativity, and understanding of user-centered design principles.",
-    salary: "$70,000 - $85,000 per year",
-    benefits: "Health insurance, flexible work hours, and creative freedom."
-  }
-]
+// export default function Page() {
+//   return (
+//     <div className='max-w-6xl mx-auto px-5 space-y-10'>
+//       <div>
+//         <Input
+//           placeholder="Find your next adventure..."
+//           className="!text-4xl border-none shadow-none focus:outline-none focus:ring-0 py-5"
+//         />
+
+//       </div>
+
+//       <div className='flex justify-center'>
+//         <div>
+//           <Button variant="ghost" className='bg-red-200 h-full w-30'>
+//             <XIcon className='size-5' />
+//           </Button>
+//         </div>
+
+//         <Swiper
+//           effect={'cards'}
+//           grabCursor={true}
+//           modules={[EffectCards]}
+//         >
+//           {mockup.map((job, idx) => (
+//             <SwiperSlide key={idx}>
+//               <Card className='w-full h-full'>
+//                 <CardHeader>
+//                   <CardTitle>{job.title}</CardTitle>
+//                   <CardDescription>{job.company}</CardDescription>
+//                 </CardHeader>
+//                 {/* …other fields… */}
+//               </Card>
+//             </SwiperSlide>
+//           ))}
+//         </Swiper>
+
+//         <div>
+//           <Button variant="ghost" className='bg-green-200 h-full w-30'>
+//             <HeartIcon className='size-5' />
+//           </Button>
+//         </div>
+//       </div>
+
+//     </div>
+//   );
+// }
+
+'use client';
+
+import { motion, useAnimation } from 'framer-motion';
+import { useState } from 'react';
+import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { mockup } from './mockup'; // Adjust the import path as necessary
+
+type Job = typeof mockup[0];
 
 export default function Page() {
+  const [jobs, setJobs] = useState<Job[]>(mockup);
+  const [likedJobs, setLikedJobs] = useState<Job[]>([]);
+
+  const handleSwipe = (direction: 'left' | 'right', job: Job) => {
+    if (direction === 'right') {
+      setLikedJobs(prev => [...prev, job]);
+    }
+    setJobs(prev => prev.filter(j => j !== job));
+  };
+
   return (
-    <div className='max-w-6xl mx-auto px-5 space-y-10'>
-      <div>
-        <Input
-          placeholder="Find your next adventure..."
-          className="!text-4xl border-none shadow-none focus:outline-none focus:ring-0 py-5"
-        />
+    <div className="max-w-4xl mx-auto p-8 space-y-10">
+      <h1 className="text-3xl font-bold text-center">Find Your Next Job</h1>
 
+      <div className="relative w-full h-[500px]">
+        {jobs.map((job, index) => (
+          <DraggableJobCard
+            key={job.title}
+            job={job}
+            index={index}
+            onSwipe={handleSwipe}
+          />
+        ))}
       </div>
 
-      <div className='flex justify-center'>
-        <div>
-          <Button variant="ghost" className='bg-red-200 h-full w-30'>
-            <XIcon className='size-5' />
-          </Button>
+      {likedJobs.length > 0 && (
+        <div className="mt-10">
+          <h2 className="text-xl font-bold mb-2">Liked Jobs:</h2>
+          <ul className="space-y-1">
+            {likedJobs.map((job, idx) => (
+              <li key={idx} className="bg-green-100 p-3 rounded">
+                ✅ {job.title} at {job.company}
+              </li>
+            ))}
+          </ul>
         </div>
-
-        <Swiper
-          effect={'cards'}
-          grabCursor={true}
-          modules={[EffectCards]}
-        >
-          {mockup.map((job, index) => (
-            <SwiperSlide key={index}>
-              <Card className='w-full h-full'>
-                <CardHeader>
-                  <CardTitle>Software Engineer</CardTitle>
-                  <CardDescription>Garuda Hacks</CardDescription>
-                </CardHeader>
-              </Card>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-
-        <div>
-          <Button variant="ghost" className='bg-green-200 h-full w-30'>
-            <HeartIcon className='size-5' />
-          </Button>
-        </div>
-      </div>
-
+      )}
     </div>
+  );
+}
+
+function DraggableJobCard({
+  job,
+  index,
+  onSwipe
+}: {
+  job: Job;
+  index: number;
+  onSwipe: (direction: 'left' | 'right', job: Job) => void;
+}) {
+  const controls = useAnimation();
+
+  return (
+    <motion.div
+      drag="x"
+      className="absolute w-full h-full cursor-grab"
+      style={{ zIndex: 100 - index }}
+      initial={{ scale: 1 }}
+      animate={controls}
+      whileDrag={{ scale: 1.02 }}
+      dragConstraints={{ left: 0, right: 0 }}
+      onDragEnd={(_, info) => {
+        if (info.offset.x > 150) {
+          // Swiped right
+          controls.start({ x: 1000, opacity: 0 }).then(() => {
+            onSwipe('right', job);
+          });
+        } else if (info.offset.x < -150) {
+          // Swiped left
+          controls.start({ x: -1000, opacity: 0 }).then(() => {
+            onSwipe('left', job);
+          });
+        } else {
+          // Snap back
+          controls.start({ x: 0 });
+        }
+      }}
+    >
+      <Card className="w-full h-full shadow-lg">
+        <CardHeader>
+          <CardTitle>{job.title}</CardTitle>
+          <CardDescription>{job.company} — {job.location}</CardDescription>
+          <p className="text-sm mt-3">{job.description}</p>
+          <p className="text-xs text-muted-foreground mt-2">
+            💼 {job.requirements}
+          </p>
+        </CardHeader>
+      </Card>
+    </motion.div>
   );
 }
