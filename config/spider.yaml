@@ -1,0 +1,24 @@
+version: 1
+sites:
+  - url: https://snaphunt.com/job-listing/all-locations/all-locationtypes/data%20science%20&%20analytics
+    type: scroll
+    listings:
+      selector: "div.infinite-scroll-component>div.content"
+    #     item: 
+    #       title: "h3.header"
+    #       company: div[3]>span
+    #       company: ".company-name"
+    #       location: ".location"
+    #       date: ".date-posted"
+    #       link: "a.job-link"
+  
+  - url: https://cari.scholarship.or.id/listings/
+    type: pagination
+    listings:
+      selector: "article.hp-listing"
+    #     item:
+    #       title: "h4.hp-listing__title>a"
+    #       company: ".hp-listing__attribute--donatur"
+    #       location: ".location"
+    #       date: ".date"
+    #       link: "h4.hp-listing__title>a"
