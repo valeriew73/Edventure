@@ -5,20 +5,12 @@ listing-sites:
     listings:
       selector: "article.hp-listing"
       item:
-        # title: "h4.hp-listing__title>a"
-        # company: ".hp-listing__attribute--donatur"
-        # location: ".location"
-        # date: ".date"
         link: "h4.hp-listing__title>a"
   - url: https://bigfuture.collegeboard.org/scholarships
     type: single
     listings:
       selector: "div.td-cpt-post"
       item:
-        # title: "h3.card-title>a"
-        # company: ".card-subtitle"
-        # location: ".location"
-        # date: ".date-posted"
         link: "div.td-read-more>a"
   - url: https://www.scholarshipregion.com/category/scholarships/undergraduate-scholarships/
 
@@ -27,52 +19,30 @@ listing-sites:
     listings:
       selector: "li.job-listing"
       item:
-        # title: "h3.header"
-        # company: div[3]>span
-        # company: ".company-name"
-        # location: ".location"
-        # date: ".date-posted"
         link: "a.job-link"
   - url: https://cord.com/search/jobs
     type: scroll
     listings:
       selector: "a.position_card"
       item:
-        # title: "h3.header"
-        # company: div[3]>span
-        # company: ".company-name"
-        # location: ".location"
-        # date: ".date-posted"
         link: "a.position_card"
   - url: https://id.jobstreet.com/id/jobs
     type: pagination
     listings:
       selector: "article"
       item:
-        # title: "h3._1w6b2d__title>a"
-        # company: "span._1w6b2d__company-name"
-        # location: ".location"
-        # date: ".date-posted"
         link: 'a[data-automation="job-list-item-link-overlay"]'
   - url: https://www.dice.com/jobs
     type: pagination
     listings:
       selector: 'div[role="listitem"]'
       item:
-        # title: "h3.job-title>a"
-        # company: ".company-name"
-        # location: ".location"
-        # date: ".date-posted"
         link: 'a[data-testid="job-search-job-card-link"]'
   - url: https://diversityjobs.com/candidate/job_search/quick/results?keyword=&location=&op=Find+Jobs&gacid=&form_id=jj_frontpage_searchform&gacid_enabled=true&gacid_termlist=
     type: pagination
     listings:
       selector: 'div[id="s-res"]'
       item:
-        # title: "h3.job-title>a"
-        # company: ".company-name"
-        # location: ".location"
-        # date: ".date-posted"
         link: 'p.job-title>a'
 single-sites:
   - url: https://www.scholarshipdiary.com/list-of-available-scholarships-in-2025/

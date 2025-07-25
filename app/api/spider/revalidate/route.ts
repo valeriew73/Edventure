@@ -33,14 +33,15 @@ async function revalidateFunction() {
         const page = await browser.newPage();
 
         for (const site of config['listing-sites']) {
-            await page.goto(site.url);
+            // console.log(`Crawling site: ${site}`);
+            await page.goto(site["url"], { timeout: 60000 });
             // get all listings email and save to database
-            const listings = await page.$$eval(site.listings.selector, (elements) => {
+            const listings = await page.$$eval(site["listings"]["selector"], (elements) => {
                 return elements.map((el) => {
                     const item: any = {};
-                    for (const key in site.listings.item) {
+                    for (const key in site["listings"]["item"]) {
                         if (key === "link") {
-                            item[key] = el.querySelector(site.listings.item[key])?.getAttribute("href") || "";
+                            item[key] = el.querySelector(site["listings"]["item"][key])?.getAttribute("href") || "";
                         }
                     }
                     return item;
@@ -49,13 +50,9 @@ async function revalidateFunction() {
 
             for (const listing of listings) {
                 if (listing.link) {
-                    await ragApplication.addLoader(new WebLoader({ urlOrContent: listing.link }));
+                    await ragApplication.addLoader(new WebLoader({ urlOrContent: listing["link"] }));
                 }
             }
-
-            // const load = await ragApplication..query('What is the net worth of Elon Musk today?')
-
-            // return load;
         }
 
         return true;
