@@ -3,7 +3,7 @@ import { openai } from '@ai-sdk/openai';
 import { streamText } from 'ai';
 
 
-export const mockup = [
+const mockup = [
     {
         title: "Software Engineer",
         company: "Garuda Hacks",
