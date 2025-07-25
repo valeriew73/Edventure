@@ -2,6 +2,7 @@
 
 import { DecodedIdToken } from "firebase-admin/auth";
 import { cookies } from "next/headers";
+import { getUser } from "./user";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
@@ -30,7 +31,17 @@ export const serverAuth = async (): Promise<ServerAuthResponse> => {
 
         if (!responseAPI.ok) throw new Error("Unauthorized");
 
-        return await responseAPI.json();
+        const result = await responseAPI.json();
+
+        const userData = await getUser(result.user.uid);
+
+        return {
+            isAuthenticated: true,
+            user: {
+                ...result.user,
+                ...userData,
+            } as any,
+        }
     } catch (error) {
         console.log("Error in serverAuth:", error);
         return invalidSession;

@@ -25,7 +25,7 @@ import { useIsMobile } from '@/components/use-is-mobile';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 
-import arrowRightImage from "@/public/arrow-right.png"
+import arrowRightImage from "@/public/arrow-right-2.png"
 import SwipeTour from '@/components/swipe-toure';
 
 
