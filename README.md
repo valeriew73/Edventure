@@ -33,6 +33,9 @@ We developed Edventure, an AI-powered opportunity matching platform, with the ai
 11. After finishing and being redirected to the home page, you can now `swipe the card`. Left to `discard` and right to `save` 
 12. Now you can use the app freely
 
+> **How to re-crawl data:**  
+> Make request into `http://3000/api/spider/revalidate` with `POST`. It Will crawl source automatically and insert into Qdrant
+
 ## Credits
 - Code refinement: [OpenAI](https://openai.com)   
 - Domain and hosting: [TheYoung](https://theyoung.id)
