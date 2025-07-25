@@ -3,10 +3,10 @@
 We developed Edventure, an AI-powered opportunity matching platform, with the aim to bridge the gap between access and potential. Edventure utilises CV analysis and interest matching to curate personalized recommendations of opportunities such as scholarships, competitions, internships and volunteer programs. We collect and structure data of hundreds of programs, both international and national, to be consulted by our intelligent filtering system. The user’s information scanned from their CV and preferences entered into their textbox are securely stored via Firebase, allowing continuous learning and real time recommendation refinement.
 
 ## Tech Stack:
-- Data: [QDrant](https://qdrant.tech/), [Firebase Firestore](firebase.google.com), [FirebaseAuth](firebase.google.com), [OpenAI](openai.com)
-- Frameworks: [Next.Js](https://nextjs.org/), [TailwindCSS](https://tailwindcss.com/), [Playwright](https://playwright.dev/)  
-- Runtime environment and UI: [Node.Js](https://nodejs.org/en), [Shadcn](https://ui.shadcn.com/)  
-- Design: [Figma](https://www.figma.com), Google Slides  
+- **Data:** [QDrant](https://qdrant.tech/), [Firebase Firestore](https://firebase.google.com), [Firebase Auth](https://firebase.google.com), [OpenAI](https://openai.com)  
+- **Frameworks:** [Next.js](https://nextjs.org/), [Tailwind CSS](https://tailwindcss.com), [Playwright](https://playwright.dev)  
+- **Runtime & UI:** [Node.js](https://nodejs.org/en), [Shadcn UI](https://ui.shadcn.com)  
+- **Design:** [Figma](https://www.figma.com), [Google Slides](https://slides.google.com) 
 
 ## Features:
 - AI powered CV scanning 
@@ -22,3 +22,9 @@ We developed Edventure, an AI-powered opportunity matching platform, with the ai
 ## How to Use
 
 ## Credits
+
+- **AI & Data Engineering** – [OpenAI](https://openai.com), [QDrant](https://qdrant.tech)  
+- **Backend & Database** – [Firebase](https://firebase.google.com), [Node.js](https://nodejs.org/en)  
+- **Frontend Development** – [Next.js](https://nextjs.org/), [Tailwind CSS](https://tailwindcss.com), [Shadcn UI](https://ui.shadcn.com)  
+- **Testing** – [Playwright](https://playwright.dev)  
+- **Design & Prototyping** – [Figma](https://www.figma.com), [Google Slides](https://slides.google.com)
