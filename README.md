@@ -3,10 +3,10 @@
 We developed Edventure, an AI-powered opportunity matching platform, with the aim to bridge the gap between access and potential. Edventure utilises CV analysis and interest matching to curate personalized recommendations of opportunities such as scholarships, competitions, internships and volunteer programs. We collect and structure data of hundreds of programs, both international and national, to be consulted by our intelligent filtering system. The user’s information scanned from their CV and preferences entered into their textbox are securely stored via Firebase, allowing continuous learning and real time recommendation refinement.
 
 ## Tech Stack
-- **Frontend Development & UI design**: [Next.js](https://nextjs.org/), [Tailwind CSS](https://tailwindcss.com), [Shadcn UI](https://ui.shadcn.com), [Figma](https://www.figma.com)
+- **Frontend Development & UI**: [Next.js](https://nextjs.org/), [Tailwind CSS](https://tailwindcss.com), [Shadcn UI](https://ui.shadcn.com) 
 - **Backend & Database**: [Firebase](https://firebase.google.com), [Node.js](https://nodejs.org/en)  
-- **AI & Data Engineering**: [OpenAI](https://openai.com), [QDrant](https://qdrant.tech)  
-- **Testing**: [Playwright](https://playwright.dev)  
+- **AI & Data Engineering**: [OpenAI](https://openai.com), [QDrant](https://qdrant.tech), [Playwright](https://playwright.dev)  
+- **Design**: [Figma](https://www.figma.com)
 
 ## Features
 - AI powered CV scanning 
