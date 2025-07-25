@@ -1,4 +1,5 @@
 # Edventure
+
 We developed Edventure, an AI-powered opportunity matching platform, with the aim to bridge the gap between access and potential. Edventure utilises CV analysis and interest matching to curate personalized recommendations of opportunities such as scholarships, competitions, internships and volunteer programs. We collect and structure data of hundreds of programs, both international and national, to be consulted by our intelligent filtering system. The user’s information scanned from their CV and preferences entered into their textbox are securely stored via Firebase, allowing continuous learning and real time recommendation refinement.
 
 ## Tech Stack:
@@ -14,3 +15,10 @@ We developed Edventure, an AI-powered opportunity matching platform, with the ai
 - Continuous recommendation refinement - user progress and preferences stored securely via Firebase 
 > Premium only features ($29.99/6 month)
 > - Access to international-level opportunities
+> - Unlimited access to AI prompt text box
+> - Unlimited swipes per day to explore as many
+> - save unlimited opportunities
+
+## How to Use
+
+## Credits
