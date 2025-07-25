@@ -36,17 +36,33 @@ async function revalidateFunction() {
             // console.log(`Crawling site: ${site}`);
             await page.goto(site["url"], { timeout: 60000 });
             // get all listings email and save to database
-            const listings = await page.$$eval(site["listings"]["selector"], (elements) => {
-                return elements.map((el) => {
-                    const item: any = {};
-                    for (const key in site["listings"]["item"]) {
-                        if (key === "link") {
-                            item[key] = el.querySelector(site["listings"]["item"][key])?.getAttribute("href") || "";
+            // const listings = await page.$$eval(site["listings"]["selector"], (elements) => {
+            //     return elements.map((el) => {
+            //         const item: any = {};
+            //         for (const key in site["listings"]["item"]) {
+            //             if (key === "link") {
+            //                 item[key] = el.querySelector(site["listings"]["item"][key])?.getAttribute("href") || "";
+            //             }
+            //         }
+            //         return item;
+            //     });
+            // });  
+
+            const listings = await page.$$eval(
+                site["listings"]["selector"],
+                (elements, itemConfig) => {
+                    return elements.map((el) => {
+                        const item: any = {};
+                        for (const key in itemConfig) {
+                            if (key === "link") {
+                                item[key] = el.querySelector(itemConfig[key])?.getAttribute("href") || "";
+                            }
                         }
-                    }
-                    return item;
-                });
-            });
+                        return item;
+                    });
+                },
+                site["listings"]["item"] // <-- passed as 3rd argument to $$eval
+            );
 
             for (const listing of listings) {
                 if (listing.link) {
