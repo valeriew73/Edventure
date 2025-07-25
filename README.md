@@ -23,14 +23,15 @@ We developed Edventure, an AI-powered opportunity matching platform, with the ai
 1. Clone the [repo](https://github.com/valeriew73/Edventure)
 2. Open terminal or VSCode and go to the Edventure directory
 3. Run `npm install`
-4. Copy .env.example into .env and replace all the values inside with your own values
-5. To run development: run `npm run dev` 
-6. To run production: run `npm run build` followed with `npm run start`
-7. Now you can access the WebApp through [browser](http://localhost:3000)
-8. You will be required to login before accessing the app
-9. Now you need to insert your personal data/CV to giving the AI more context about you
-10. After finishing and being redirected to the home page, you can now `swipe the card`. Left to `discard` and right to `save` 
-11. Now you can use the app freely
+4. Install playwright browser by running `npx playwright install --with-deps chromium `
+5. Copy .env.example into .env and replace all the values inside with your own values
+6. To run development: run `npm run dev` 
+7. To run production: run `npm run build` followed with `npm run start`
+8. Now you can access the WebApp through [browser](http://localhost:3000)
+9. You will be required to login before accessing the app
+10. Now you need to insert your personal data/CV to giving the AI more context about you
+11. After finishing and being redirected to the home page, you can now `swipe the card`. Left to `discard` and right to `save` 
+12. Now you can use the app freely
 
 ## Credits
 - Code refinement: [OpenAI](https://openai.com)   
